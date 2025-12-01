@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - Aya Acessórios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #A7ED00, #8BC500);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .offline-container {
+            text-align: center;
+            padding: 40px;
+            max-width: 500px;
+        }
+
+        .offline-icon {
+            font-size: 120px;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .btn-retry {
+            display: inline-block;
+            padding: 16px 40px;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        .btn-retry:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .status-text {
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .pulse {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">📡</div>
+        <h1>Você está Offline</h1>
+        <p>Parece que você perdeu a conexão com a internet. Verifique sua conexão e tente novamente.</p>
+        
+        <button onclick="window.location.href='./index.html'" class="btn-retry">
+            🔄 Voltar para Início
+        </button>
+
+        <div class="status-text">
+            <span class="pulse"></span>
+            <span id="statusText">Aguardando conexão...</span>
+        </div>
+    </div>
+
+    <script>
+        // APENAS verificar conexão - SEM registrar Service Worker aqui
+        const statusText = document.getElementById('statusText');
+
+        // Listener para quando voltar online
+        window.addEventListener('online', () => {
+            statusText.textContent = 'Conexão restaurada!';
+            setTimeout(() => {
+                window.location.href = './index.html';
+            }, 1000);
+        });
+
+        // Verificar status
+        if (navigator.onLine) {
+            statusText.textContent = 'Online - Redirecionando...';
+            setTimeout(() => {
+                window.location.href = './index.html';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

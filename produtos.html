@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - Aya Acessórios</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#A7ED00">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="loja-styles-premium.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .filters-bar {
+            background: var(--off-white);
+            padding: var(--space-lg) 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .filters-content {
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-item label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-item select,
+        .filter-item input {
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-family: var(--font-body);
+            transition: var(--transition-base);
+        }
+
+        .filter-item select:focus,
+        .filter-item input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(167, 237, 0, 0.1);
+        }
+
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+
+        .products-count {
+            font-size: 14px;
+            color: var(--dark-gray);
+        }
+
+        @media (max-width: 768px) {
+            .filters-content {
+                flex-direction: column;
+            }
+
+            .filter-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Premium -->
+    <header class="header-premium">
+        <div class="top-bar-premium">
+            <div class="container-premium">
+                <div class="top-bar-content">
+                    <p class="announcement">✨ Frete Grátis em Compras Acima de R$ 299</p>
+                    <div class="top-actions">
+                        <a href="#" id="headerInstagram" class="top-link" target="_blank">
+                            <span>📷 Instagram</span>
+                        </a>
+                        <a href="#" id="headerWhatsapp" class="top-link">
+                            <span>💬 WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-header-premium">
+            <div class="container-premium">
+                <div class="header-content-premium">
+                    <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <div class="logo-premium">
+                        <a href="index.html">
+                            <img src="" alt="Aya Acessórios" id="logoImage" class="logo-img" style="display: none;">
+                            <h1 class="logo-text-premium" id="logoText">AYA ACESSÓRIOS</h1>
+                        </a>
+                    </div>
+
+                    <nav class="main-nav-premium" id="mainNav">
+                        <a href="index.html" class="nav-link-premium">Início</a>
+                        <a href="produtos.html" class="nav-link-premium active">Coleção</a>
+                        <a href="sobre.html" class="nav-link-premium">Nossa História</a>
+                        <a href="contato.html" class="nav-link-premium">Contato</a>
+                    </nav>
+
+                    <div class="header-actions">
+                        <a href="carrinho.html" class="cart-btn-premium">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 2L7 5"/>
+                                <path d="M17 2L19 5"/>
+                                <rect x="2" y="5" width="20" height="14" rx="2"/>
+                                <path d="M10 12L14 12"/>
+                            </svg>
+                            <span class="cart-count-premium" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Filtros -->
+    <section class="filters-bar">
+        <div class="container-premium">
+            <div class="filters-content">
+                <div class="filter-item">
+                    <label for="searchInput">Buscar</label>
+                    <input type="text" id="searchInput" placeholder="Digite o nome do produto...">
+                </div>
+
+                <div class="filter-item">
+                    <label for="collectionFilter">Coleção</label>
+                    <select id="collectionFilter">
+                        <option value="">Todas as Coleções</option>
+                    </select>
+                </div>
+
+                <div class="filter-item">
+                    <label for="sortFilter">Ordenar por</label>
+                    <select id="sortFilter">
+                        <option value="newest">Mais Recentes</option>
+                        <option value="oldest">Mais Antigos</option>
+                        <option value="price-asc">Menor Preço</option>
+                        <option value="price-desc">Maior Preço</option>
+                        <option value="name-asc">Nome (A-Z)</option>
+                        <option value="name-desc">Nome (Z-A)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lista de Produtos -->
+    <section class="products-premium">
+        <div class="container-premium">
+            <div class="products-header">
+                <div>
+                    <span class="section-label">NOSSA COLEÇÃO</span>
+                    <h2 class="section-title-premium">Todos os Produtos</h2>
+                </div>
+                <p class="products-count" id="productsCount">Carregando...</p>
+            </div>
+
+            <div class="products-grid-premium" id="productsGrid">
+                <div class="loading-elegant">
+                    <div class="spinner-elegant"></div>
+                    <p>Carregando produtos...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Premium -->
+    <footer class="footer-premium">
+        <div class="container-premium">
+            <div class="footer-grid-premium">
+                <div class="footer-col">
+                    <h3 class="footer-logo">AYA ACESSÓRIOS</h3>
+                    <p class="footer-description" id="footerAbout">
+                        Elegância e exclusividade em cada detalhe.
+                    </p>
+                    <div class="social-links-premium">
+                        <a href="#" id="footerInstagram" target="_blank" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/>
+                            </svg>
+                        </a>
+                        <a href="#" id="footerWhatsapp" target="_blank" aria-label="WhatsApp">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <ul class="footer-links-premium">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="produtos.html">Coleção</a></li>
+                        <li><a href="sobre.html">Nossa História</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Atendimento</h4>
+                    <ul class="footer-contact-premium">
+                        <li id="footerPhone">-</li>
+                        <li id="footerEmail">-</li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Informações</h4>
+                    <p class="footer-address" id="footerAddress">-</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom-premium">
+                <p>&copy; 2025 Aya Acessórios. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating -->
+    <a href="#" id="whatsappFloat" class="whatsapp-float-premium" target="_blank" aria-label="WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+    
+    <script src="loja-config.js"></script>
+    <script src="produtos-page.js"></script>
+</body>
+</html>

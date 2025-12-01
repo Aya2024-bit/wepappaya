@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Aya Acessórios</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#A7ED00">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="loja-styles-premium.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        .contact-section {
+            padding: var(--space-3xl) 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+        }
+
+        .contact-info-card {
+            background: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-info-card h2 {
+            font-family: var(--font-display);
+            font-size: 32px;
+            margin-bottom: var(--space-lg);
+            color: var(--black);
+            font-weight: 700;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+            padding: var(--space-md);
+            background: var(--off-white);
+            border-radius: var(--radius-md);
+            transition: var(--transition-base);
+        }
+
+        .contact-item:hover {
+            background: var(--light-gray);
+        }
+
+        .contact-icon {
+            font-size: 32px;
+            min-width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .contact-details h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-details p {
+            font-size: 16px;
+            color: var(--dark-gray);
+            margin: 0;
+        }
+
+        .contact-details a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form-card {
+            background: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-form-card h2 {
+            font-family: var(--font-display);
+            font-size: 32px;
+            margin-bottom: var(--space-md);
+            color: var(--black);
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--black);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--gray);
+            border-radius: var(--radius-sm);
+            font-size: 16px;
+            font-family: var(--font-body);
+            transition: var(--transition-base);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(167, 237, 0, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--primary);
+            color: var(--black);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .social-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-base);
+        }
+
+        .social-btn.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .social-btn.whatsapp:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .social-btn.instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+        }
+
+        .social-btn.instagram:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Premium -->
+    <header class="header-premium">
+        <div class="top-bar-premium">
+            <div class="container-premium">
+                <div class="top-bar-content">
+                    <p class="announcement">✨ Frete Grátis em Compras Acima de R$ 299</p>
+                    <div class="top-actions">
+                        <a href="#" id="headerInstagram" class="top-link" target="_blank">
+                            <span>📷 Instagram</span>
+                        </a>
+                        <a href="#" id="headerWhatsapp" class="top-link">
+                            <span>💬 WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-header-premium">
+            <div class="container-premium">
+                <div class="header-content-premium">
+                    <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <div class="logo-premium">
+                        <a href="index.html">
+                            <img src="" alt="Aya Acessórios" id="logoImage" class="logo-img" style="display: none;">
+                            <h1 class="logo-text-premium" id="logoText">AYA ACESSÓRIOS</h1>
+                        </a>
+                    </div>
+
+                    <nav class="main-nav-premium" id="mainNav">
+                        <a href="index.html" class="nav-link-premium">Início</a>
+                        <a href="produtos.html" class="nav-link-premium">Coleção</a>
+                        <a href="sobre.html" class="nav-link-premium">Nossa História</a>
+                        <a href="contato.html" class="nav-link-premium active">Contato</a>
+                    </nav>
+
+                    <div class="header-actions">
+                        <a href="carrinho.html" class="cart-btn-premium">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 2L7 5"/>
+                                <path d="M17 2L19 5"/>
+                                <rect x="2" y="5" width="20" height="14" rx="2"/>
+                                <path d="M10 12L14 12"/>
+                            </svg>
+                            <span class="cart-count-premium" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contato -->
+    <section class="contact-section">
+        <div class="container-premium">
+            <div class="section-header-premium">
+                <span class="section-label">FALE CONOSCO</span>
+                <h1 class="section-title-premium">Entre em Contato</h1>
+                <p class="section-description">Estamos aqui para ajudar você</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Informações de Contato -->
+                <div class="contact-info-card">
+                    <h2>Nossas Informações</h2>
+                    
+                    <div id="contactInfoContainer">
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-details">
+                                <h3>Telefone / WhatsApp</h3>
+                                <p id="phoneContact">Carregando...</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h3>E-mail</h3>
+                                <p id="emailContact">Carregando...</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📷</div>
+                            <div class="contact-details">
+                                <h3>Instagram</h3>
+                                <p id="instagramContact">Carregando...</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-details">
+                                <h3>Endereço</h3>
+                                <p id="addressContact">Carregando...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-buttons">
+                        <a href="#" id="whatsappBtn" target="_blank" class="social-btn whatsapp">
+                            💬 WhatsApp
+                        </a>
+                        <a href="#" id="instagramBtn" target="_blank" class="social-btn instagram">
+                            📷 Instagram
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Formulário de Contato -->
+                <div class="contact-form-card">
+                    <h2>Envie uma Mensagem</h2>
+                    <p style="color: var(--dark-gray); margin-bottom: var(--space-lg); font-size: 16px;">
+                        Preencha o formulário e entraremos em contato via WhatsApp
+                    </p>
+
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nome *</label>
+                            <input type="text" id="name" required placeholder="Seu nome completo">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail *</label>
+                            <input type="email" id="email" required placeholder="seu@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" placeholder="(00) 00000-0000">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Assunto *</label>
+                            <input type="text" id="subject" required placeholder="Sobre o que você quer falar?">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mensagem *</label>
+                            <textarea id="message" required placeholder="Digite sua mensagem aqui..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            📤 Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Premium -->
+    <footer class="footer-premium">
+        <div class="container-premium">
+            <div class="footer-grid-premium">
+                <div class="footer-col">
+                    <h3 class="footer-logo">AYA ACESSÓRIOS</h3>
+                    <p class="footer-description" id="footerAbout">
+                        Elegância e exclusividade em cada detalhe.
+                    </p>
+                    <div class="social-links-premium">
+                        <a href="#" id="footerInstagram" target="_blank" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/>
+                            </svg>
+                        </a>
+                        <a href="#" id="footerWhatsapp" target="_blank" aria-label="WhatsApp">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <ul class="footer-links-premium">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="produtos.html">Coleção</a></li>
+                        <li><a href="sobre.html">Nossa História</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Atendimento</h4>
+                    <ul class="footer-contact-premium">
+                        <li id="footerPhone">-</li>
+                        <li id="footerEmail">-</li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Informações</h4>
+                    <p class="footer-address" id="footerAddress">-</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom-premium">
+                <p>&copy; 2025 Aya Acessórios. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating -->
+    <a href="#" id="whatsappFloat" class="whatsapp-float-premium" target="_blank" aria-label="WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+    
+    <script src="loja-config.js"></script>
+
+    <script>
+        let whatsappNumber = '';
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadStoreSettings();
+            await loadContactInfo();
+            setupContactForm();
+            setupMobileMenu();
+            updateCartCount();
+        });
+
+        async function loadContactInfo() {
+            try {
+                const doc = await db.collection('settings').doc('storeConfig').get();
+                
+                if (doc.exists) {
+                    const settings = doc.data();
+                    const contact = settings.contact || {};
+
+                    // Telefone
+                    const phoneContact = document.getElementById('phoneContact');
+                    if (contact.whatsapp || contact.phone) {
+                        const phone = contact.whatsapp || contact.phone;
+                        phoneContact.innerHTML = `<a href="tel:${phone.replace(/\D/g, '')}">${phone}</a>`;
+                        whatsappNumber = phone.replace(/\D/g, '');
+                    } else {
+                        phoneContact.textContent = 'Não informado';
+                    }
+
+                    // E-mail
+                    const emailContact = document.getElementById('emailContact');
+                    if (contact.email) {
+                        emailContact.innerHTML = `<a href="mailto:${contact.email}">${contact.email}</a>`;
+                    } else {
+                        emailContact.textContent = 'Não informado';
+                    }
+
+                    // Instagram
+                    const instagramContact = document.getElementById('instagramContact');
+                    if (contact.instagram) {
+                        const handle = contact.instagram.replace('@', '');
+                        instagramContact.innerHTML = `<a href="https://instagram.com/${handle}" target="_blank">${contact.instagram}</a>`;
+                    } else {
+                        instagramContact.textContent = 'Não informado';
+                    }
+
+                    // Endereço
+                    const addressContact = document.getElementById('addressContact');
+                    if (contact.address) {
+                        addressContact.textContent = contact.address;
+                    } else {
+                        addressContact.textContent = 'Não informado';
+                    }
+
+                    // Botões sociais
+                    if (contact.whatsapp) {
+                        const whatsappBtn = document.getElementById('whatsappBtn');
+                        whatsappBtn.href = `https://wa.me/55${whatsappNumber}`;
+                    }
+
+                    if (contact.instagram) {
+                        const instagramBtn = document.getElementById('instagramBtn');
+                        const handle = contact.instagram.replace('@', '');
+                        instagramBtn.href = `https://instagram.com/${handle}`;
+                    }
+                }
+            } catch (error) {
+                console.error('Erro ao carregar informações de contato:', error);
+            }
+        }
+
+        function setupContactForm() {
+            const form = document.getElementById('contactForm');
+            
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+
+                // Montar mensagem para WhatsApp
+                let whatsappMessage = `📩 *Nova Mensagem de Contato*\n\n`;
+                whatsappMessage += `*Nome:* ${name}\n`;
+                whatsappMessage += `*E-mail:* ${email}\n`;
+                if (phone) whatsappMessage += `*Telefone:* ${phone}\n`;
+                whatsappMessage += `*Assunto:* ${subject}\n\n`;
+                whatsappMessage += `*Mensagem:*\n${message}`;
+
+                const whatsappLink = `https://wa.me/55${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+                
+                window.open(whatsappLink, '_blank');
+
+                // Limpar formulário
+                form.reset();
+                showNotification('✅ Mensagem preparada! Você será redirecionado para o WhatsApp.');
+            });
+        }
+    </script>
+</body>
+</html>

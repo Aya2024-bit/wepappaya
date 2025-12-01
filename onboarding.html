@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo - Aya Acessórios</title>
+    <link rel="stylesheet" href="onboarding.css">
+</head>
+<body>
+    <!-- Etapa 1: Install Prompt -->
+    <div id="install-screen" class="screen active">
+        <img src="icon-192x192.png" alt="Aya Logo">
+        <h1>Instale o App</h1>
+        <p>Tenha acesso rápido e receba ofertas exclusivas!</p>
+        <button id="install-btn">Instalar Agora</button>
+        <button id="skip-install" class="secondary">Continuar sem instalar</button>
+    </div>
+
+    <!-- Etapa 2: Push Notification Signup -->
+    <div id="notification-screen" class="screen">
+        <img src="icon-192x192.png" alt="Notificações">
+        <h1>Receba Promoções</h1>
+        <p>Cadastre-se para notificações de ofertas exclusivas</p>
+        <input type="text" id="user-name" placeholder="Seu nome">
+        <input type="email" id="user-email" placeholder="Seu e-mail">
+        <button id="subscribe-btn">Ativar Notificações</button>
+        <button id="skip-notifications" class="secondary">Pular</button>
+    </div>
+
+    <script src="onboarding.js"></script>
+</body>
+</html>

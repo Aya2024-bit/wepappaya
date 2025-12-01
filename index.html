@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Aya Acessórios - Elegância Exclusiva</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#A7ED00">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Aya Acessórios">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="loja-styles-premium.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- ===================================
+     META TAGS PARA iOS/SAFARI
+     =================================== -->
+
+     <!-- Ícones Apple (OBRIGATÓRIO para iOS) -->
+     <link rel="apple-touch-icon" sizes="180x180" href="./icon-192x192.png">
+     <link rel="apple-touch-icon" sizes="152x152" href="./icon-192x192.png">
+     <link rel="apple-touch-icon" sizes="144x144" href="./icon-144x144.png">
+     <link rel="apple-touch-icon" sizes="120x120" href="./icon-192x192.png">
+     <link rel="apple-touch-icon" sizes="114x114" href="./icon-192x192.png">
+     <link rel="apple-touch-icon" sizes="76x76" href="./icon-96x96.png">
+     <link rel="apple-touch-icon" sizes="72x72" href="./icon-72x72.png">
+     <link rel="apple-touch-icon" sizes="60x60" href="./icon-72x72.png">
+     <link rel="apple-touch-icon" sizes="57x57" href="./icon-72x72.png">
+     <link rel="apple-touch-icon" href="./icon-192x192.png">
+
+     <!-- Configurações do Safari -->
+     <meta name="apple-mobile-web-app-capable" content="yes">
+     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+     <meta name="apple-mobile-web-app-title" content="Aya Acessórios">
+
+     <!-- Splash Screen iOS (tela de carregamento) -->
+     <link rel="apple-touch-startup-image" href="./icon-512x512.png">
+
+     <!-- Desabilitar detecção automática de telefone -->
+     <meta name="format-detection" content="telephone=no">
+    
+    <style>
+        /* ===================================
+           SPLASH SCREEN
+           =================================== */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #A7ED00, #8BC500);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            animation: fadeOutSplash 0.5s ease 1.8s forwards;
+        }
+
+        .splash-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 80px;
+            font-weight: 700;
+            letter-spacing: 12px;
+            color: white;
+            margin-bottom: 16px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            animation: pulseSplash 1.5s ease infinite;
+        }
+
+        .splash-tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            letter-spacing: 4px;
+            color: white;
+            text-transform: uppercase;
+            opacity: 0.95;
+            margin-bottom: 40px;
+        }
+
+        .splash-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes pulseSplash {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeOutSplash {
+            to {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
+        }
+
+        /* ===================================
+           INSTALL PROMPT MODAL
+           =================================== */
+        .install-prompt-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 99998;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .install-prompt-modal.show {
+            display: flex;
+        }
+
+        .install-prompt-content {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 32px;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease;
+        }
+
+        .install-prompt-icon {
+            font-size: 72px;
+            margin-bottom: 24px;
+            animation: bounce 1s ease infinite;
+        }
+
+        .install-prompt-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 12px;
+        }
+
+        .install-prompt-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .install-prompt-benefits {
+            text-align: left;
+            margin-bottom: 32px;
+            background: #F5F5F5;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .install-prompt-benefits li {
+            list-style: none;
+            padding: 8px 0;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .install-prompt-benefits li:before {
+            content: "✓";
+            color: #A7ED00;
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+
+        .install-prompt-buttons {
+            display: flex;
+            gap: 12px;
+            flex-direction: column;
+        }
+
+        .install-prompt-btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .install-prompt-btn-primary {
+            background: #A7ED00;
+            color: #000;
+        }
+
+        .install-prompt-btn-primary:hover {
+            background: #8BC500;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(167, 237, 0, 0.3);
+        }
+
+        .install-prompt-btn-secondary {
+            background: transparent;
+            color: #666;
+            border: 2px solid #E0E0E0;
+        }
+
+        .install-prompt-btn-secondary:hover {
+            border-color: #A7ED00;
+            color: #A7ED00;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* ===================================
+           BOTTOM NAVIGATION (Mobile)
+           =================================== */
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 70px;
+            }
+
+            .bottom-nav {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 65px;
+                background: white;
+                border-top: 1px solid #E0E0E0;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                z-index: 1000;
+                box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+            }
+
+            .bottom-nav-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 4px;
+                padding: 8px 16px;
+                color: #666;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                font-size: 11px;
+                font-weight: 600;
+                position: relative;
+            }
+
+            .bottom-nav-item.active {
+                color: #A7ED00;
+            }
+
+            .bottom-nav-item svg {
+                width: 24px;
+                height: 24px;
+                stroke: currentColor;
+            }
+
+            .bottom-nav-badge {
+                position: absolute;
+                top: 4px;
+                right: 8px;
+                background: #A7ED00;
+                color: #000;
+                font-size: 10px;
+                font-weight: 700;
+                padding: 2px 6px;
+                border-radius: 10px;
+                min-width: 18px;
+                text-align: center;
+            }
+
+            /* Ocultar elementos no mobile */
+            .header-premium .top-bar-premium {
+                display: none;
+            }
+
+            .main-nav-premium {
+                display: none !important;
+            }
+
+            .whatsapp-float-premium {
+                bottom: 85px !important;
+            }
+        }
+
+        /* App-like scroll */
+        html {
+            overscroll-behavior: none;
+        }
+
+        body {
+            overscroll-behavior-y: contain;
+        }
+
+        /* Touch feedback */
+        * {
+            -webkit-tap-highlight-color: rgba(167, 237, 0, 0.2);
+        }
+
+        /* Page transition */
+        body {
+            animation: pageSlideIn 0.3s ease;
+        }
+
+        @keyframes pageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Active button effect */
+        .btn-primary:active,
+        .btn-secondary:active,
+        .btn-hero-premium:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-logo">AYA</div>
+        <div class="splash-tagline">Elegância Exclusiva</div>
+        <div class="splash-spinner"></div>
+    </div>
+
+    <!-- Install Prompt Modal -->
+    <div class="install-prompt-modal" id="installPromptModal">
+        <div class="install-prompt-content">
+            <div class="install-prompt-icon">📲</div>
+            <h2 class="install-prompt-title">Instalar App Aya Acessórios</h2>
+            <p class="install-prompt-text">
+                Tenha acesso rápido e uma experiência completa instalando nosso aplicativo!
+            </p>
+            <ul class="install-prompt-benefits">
+                <li>Acesso instantâneo pela tela inicial</li>
+                <li>Funciona sem internet (offline)</li>
+                <li>Notificações de promoções</li>
+                <li>Experiência como app nativo</li>
+            </ul>
+            <div class="install-prompt-buttons">
+                <button class="install-prompt-btn install-prompt-btn-primary" id="installAcceptBtn">
+                    📥 Instalar Agora
+                </button>
+                <button class="install-prompt-btn install-prompt-btn-secondary" id="installDeclineBtn">
+                    Agora Não
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Premium -->
+    <header class="header-premium">
+        <div class="top-bar-premium">
+            <div class="container-premium">
+                <div class="top-bar-content">
+                    <p class="announcement">✨ Frete Grátis em Compras Acima de R$ 299</p>
+                    <div class="top-actions">
+                        <a href="#" id="headerInstagram" class="top-link" target="_blank">
+                            <span>📷 Instagram</span>
+                        </a>
+                        <a href="#" id="headerWhatsapp" class="top-link">
+                            <span>💬 WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-header-premium">
+            <div class="container-premium">
+                <div class="header-content-premium">
+                    <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <div class="logo-premium">
+                        <a href="/index.html">
+                            <img src="" alt="Aya Acessórios" id="logoImage" class="logo-img" style="display: none;">
+                            <h1 class="logo-text-premium" id="logoText">AYA ACESSÓRIOS</h1>
+                        </a>
+                    </div>
+
+                    <nav class="main-nav-premium" id="mainNav">
+                        <a href="/index.html" class="nav-link-premium active">Início</a>
+                        <a href="produtos.html" class="nav-link-premium">Coleção</a>
+                        <a href="sobre.html" class="nav-link-premium">Nossa História</a>
+                        <a href="contato.html" class="nav-link-premium">Contato</a>
+                    </nav>
+
+                    <div class="header-actions">
+                        <a href="carrinho.html" class="cart-btn-premium">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 2L7 5"/>
+                                <path d="M17 2L19 5"/>
+                                <rect x="2" y="5" width="20" height="14" rx="2"/>
+                                <path d="M10 12L14 12"/>
+                            </svg>
+                            <span class="cart-count-premium" id="cartCount">0</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section Premium -->
+    <section class="hero-premium" id="heroBanner">
+        <div class="hero-overlay-premium">
+            <div class="container-premium">
+                <div class="hero-content-premium">
+                    <span class="hero-label">COLEÇÃO EXCLUSIVA 2025</span>
+                    <h1 class="hero-title-premium">Elegância que<br>Define Você</h1>
+                    <p class="hero-subtitle-premium">Acessórios únicos para momentos especiais</p>
+                    <a href="produtos.html" class="btn-hero-premium">
+                        <span>Explorar Coleção</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Role para descobrir</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-premium">
+        <div class="container-premium">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M20 7h-4V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2H4a1 1 0 00-1 1v11a2 2 0 002 2h14a2 2 0 002-2V8a1 1 0 00-1-1zM10 5h4v2h-4V5z"/>
+                    </svg>
+                    <h3>Peças Exclusivas</h3>
+                    <p>Coleções limitadas e únicas</p>
+                </div>
+                <div class="feature-item">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <h3>Qualidade Premium</h3>
+                    <p>Materiais selecionados</p>
+                </div>
+                <div class="feature-item">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                        <line x1="1" y1="10" x2="23" y2="10"/>
+                    </svg>
+                    <h3>Compra Segura</h3>
+                    <p>Proteção total</p>
+                </div>
+                <div class="feature-item">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="9" cy="21" r="1"/>
+                        <circle cx="20" cy="21" r="1"/>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+                    </svg>
+                    <h3>Entrega Rápida</h3>
+                    <p>Frete grátis acima de R$ 499</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promoções Premium -->
+    <section class="promotions-premium" id="promotionsSection" style="display: none;">
+        <div class="container-premium">
+            <div class="section-header-premium">
+                <span class="section-label">OFERTAS ESPECIAIS</span>
+                <h2 class="section-title-premium">Promoções Exclusivas</h2>
+            </div>
+            <div class="promotions-slider" id="promotionsGrid"></div>
+        </div>
+    </section>
+
+    <!-- Produtos em Destaque Premium -->
+    <section class="products-premium">
+        <div class="container-premium">
+            <div class="section-header-premium">
+                <span class="section-label">DESTAQUES</span>
+                <h2 class="section-title-premium">Peças em Evidência</h2>
+                <p class="section-description">Descubra nossa seleção curada de acessórios exclusivos</p>
+            </div>
+            <div class="products-grid-premium" id="featuredProducts">
+                <div class="loading-elegant">
+                    <div class="spinner-elegant"></div>
+                    <p>Carregando coleção...</p>
+                </div>
+            </div>
+            <div class="section-cta">
+                <a href="produtos.html" class="btn-secondary-premium">
+                    Ver Toda Coleção
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Premium -->
+    <section class="collections-premium" id="collectionsSection" style="display: none;">
+        <div class="container-premium">
+            <div class="section-header-premium">
+                <span class="section-label">EXPLORE</span>
+                <h2 class="section-title-premium">Nossas Coleções</h2>
+            </div>
+            <div class="collections-grid-premium" id="collectionsGrid"></div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-premium">
+        <div class="container-premium">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Receba Novidades Exclusivas</h2>
+                    <p>Cadastre-se e ganhe 10% de desconto na primeira compra</p>
+                </div>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit" class="btn-newsletter">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Premium -->
+    <footer class="footer-premium">
+        <div class="container-premium">
+            <div class="footer-grid-premium">
+                <div class="footer-col">
+                    <h3 class="footer-logo">AYA ACESSÓRIOS</h3>
+                    <p class="footer-description" id="footerAbout">Elegância e exclusividade em cada detalhe.</p>
+                    <div class="social-links-premium">
+                        <a href="#" id="footerInstagram" target="_blank" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/>
+                            </svg>
+                        </a>
+                        <a href="#" id="footerWhatsapp" target="_blank" aria-label="WhatsApp">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <ul class="footer-links-premium">
+                        <li><a href="/index.html">Início</a></li>
+                        <li><a href="produtos.html">Coleção</a></li>
+                        <li><a href="sobre.html">Nossa História</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Atendimento</h4>
+                    <ul class="footer-contact-premium">
+                        <li id="footerPhone">-</li>
+                        <li id="footerEmail">-</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Informações</h4>
+                    <p class="footer-address" id="footerAddress">-</p>
+                </div>
+            </div>
+            <div class="footer-bottom-premium">
+                <p>&copy; 2025 Aya Acessórios. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bottom Navigation (Mobile Only) -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="bottom-nav-item active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+            </svg>
+            <span>Início</span>
+        </a>
+        <a href="produtos.html" class="bottom-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"/>
+                <circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+            </svg>
+            <span>Produtos</span>
+        </a>
+        <a href="carrinho.html" class="bottom-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 2L7 5M17 2L19 5"/>
+                <rect x="2" y="5" width="20" height="14" rx="2"/>
+            </svg>
+            <span>Carrinho</span>
+            <span class="bottom-nav-badge" id="cartCountBottom"></span>
+        </a>
+        <a href="contato.html" class="bottom-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            </svg>
+            <span>Contato</span>
+        </a>
+    </nav>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="#" id="whatsappFloat" class="whatsapp-float-premium" target="_blank" aria-label="WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging-compat.js"></script>
+
+<!-- Configuração e FCM -->
+<script src="loja-config.js"></script>
+<script src="fcm-register.js"></script>
+    
+    <script>
+    // ===================================
+    // PWA INSTALL PROMPT
+    // ===================================
+    let deferredPrompt = null;
+    let installPromptShown = localStorage.getItem('installPromptShown');
+
+    // Capturar evento de instalação
+    window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('📲 Prompt de instalação capturado');
+        e.preventDefault();
+        deferredPrompt = e;
+        
+        // Mostrar modal automaticamente após 3 segundos (apenas 1x)
+        if (!installPromptShown) {
+            setTimeout(() => {
+                showInstallPrompt();
+            }, 3000);
+        }
+    });
+
+    // Mostrar modal de instalação
+    function showInstallPrompt() {
+        const modal = document.getElementById('installPromptModal');
+        if (modal && deferredPrompt) {
+            modal.classList.add('show');
+        }
+    }
+
+    // Botão Aceitar Instalação
+    document.getElementById('installAcceptBtn').addEventListener('click', async () => {
+        const modal = document.getElementById('installPromptModal');
+        
+        if (!deferredPrompt) {
+            alert('Instalação não disponível no momento. Tente pelo menu do navegador.');
+            modal.classList.remove('show');
+            return;
+        }
+
+        modal.classList.remove('show');
+        deferredPrompt.prompt();
+        
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log('Resultado instalação:', outcome);
+        
+        if (outcome === 'accepted') {
+            console.log('✅ App instalado!');
+            showNotification('✅ App instalado com sucesso!');
+        }
+        
+        deferredPrompt = null;
+        localStorage.setItem('installPromptShown', 'true');
+    });
+
+    // Botão Recusar
+    document.getElementById('installDeclineBtn').addEventListener('click', () => {
+        const modal = document.getElementById('installPromptModal');
+        modal.classList.remove('show');
+        localStorage.setItem('installPromptShown', 'true');
+    });
+
+    // Detectar quando app é instalado
+    window.addEventListener('appinstalled', () => {
+        console.log('✅ PWA instalado com sucesso!');
+        showNotification('✅ App instalado! Acesse pela tela inicial');
+        localStorage.setItem('installPromptShown', 'true');
+    });
+
+    // ===================================
+    // SERVICE WORKER
+    // ===================================
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./service-worker.js')
+                .then(reg => console.log('✅ SW registrado:', reg.scope))
+                .catch(err => console.error('❌ SW erro:', err));
+        });
+    }
+
+    // ===================================
+    // SPLASH SCREEN
+    // ===================================
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const splash = document.getElementById('splashScreen');
+            if (splash) {
+                splash.style.display = 'none';
+            }
+        }, 2000);
+    });
+
+    // ===================================
+    // NEWSLETTER
+    // ===================================
+    function setupNewsletterForm() {
+        const form = document.getElementById('newsletterForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = form.querySelector('input[type="email"]').value;
+            
+            try {
+                await db.collection('newsletter').add({
+                    email: email,
+                    subscribedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                
+                showNotification('✅ Cadastro realizado! Verifique seu e-mail.');
+                form.reset();
+            } catch (error) {
+                console.error('Erro ao cadastrar:', error);
+                showNotification('❌ Erro ao cadastrar. Tente novamente.');
+            }
+        });
+    }
+
+    // ===================================
+    // ATUALIZAR CONTADOR CARRINHO BOTTOM NAV
+    // ===================================
+    function updateCartCount() {
+        const cart = getCart();
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        
+        // Header
+        const cartCountElements = document.querySelectorAll('#cartCount, .cart-count-premium');
+        cartCountElements.forEach(element => {
+            if (element) element.textContent = totalItems;
+        });
+
+        // Bottom Nav
+        const bottomBadge = document.getElementById('cartCountBottom');
+        if (bottomBadge) {
+            if (totalItems > 0) {
+                bottomBadge.textContent = totalItems;
+                bottomBadge.style.display = 'block';
+            } else {
+                bottomBadge.style.display = 'none';
+            }
+        }
+    }
+
+    // ===================================
+    // INICIALIZAÇÃO
+    // ===================================
+    document.addEventListener('DOMContentLoaded', async () => {
+        await loadStoreSettings();
+        await loadFeaturedProducts();
+        await loadActivePromotions();
+        await loadCollections();
+        setupMobileMenu();
+        updateCartCount();
+        setupNewsletterForm();
+        
+        console.log('🚀 App Aya Acessórios carregado com sucesso!');
+    });
+    </script>
+</body>
+
+</html>
