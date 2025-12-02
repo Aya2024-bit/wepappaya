@@ -22,32 +22,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- ===================================
-     META TAGS PARA iOS/SAFARI
-     =================================== -->
+    
+    <!-- Ícones Apple -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="./icon-72x72.png">
+    <link rel="apple-touch-icon" href="./icon-192x192.png">
 
-     <!-- Ícones Apple (OBRIGATÓRIO para iOS) -->
-     <link rel="apple-touch-icon" sizes="180x180" href="./icon-192x192.png">
-     <link rel="apple-touch-icon" sizes="152x152" href="./icon-192x192.png">
-     <link rel="apple-touch-icon" sizes="144x144" href="./icon-144x144.png">
-     <link rel="apple-touch-icon" sizes="120x120" href="./icon-192x192.png">
-     <link rel="apple-touch-icon" sizes="114x114" href="./icon-192x192.png">
-     <link rel="apple-touch-icon" sizes="76x76" href="./icon-96x96.png">
-     <link rel="apple-touch-icon" sizes="72x72" href="./icon-72x72.png">
-     <link rel="apple-touch-icon" sizes="60x60" href="./icon-72x72.png">
-     <link rel="apple-touch-icon" sizes="57x57" href="./icon-72x72.png">
-     <link rel="apple-touch-icon" href="./icon-192x192.png">
+    <!-- Splash Screen iOS -->
+    <link rel="apple-touch-startup-image" href="./icon-512x512.png">
 
-     <!-- Configurações do Safari -->
-     <meta name="apple-mobile-web-app-capable" content="yes">
-     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-     <meta name="apple-mobile-web-app-title" content="Aya Acessórios">
-
-     <!-- Splash Screen iOS (tela de carregamento) -->
-     <link rel="apple-touch-startup-image" href="./icon-512x512.png">
-
-     <!-- Desabilitar detecção automática de telefone -->
-     <meta name="format-detection" content="telephone=no">
+    <!-- Desabilitar detecção automática de telefone -->
+    <meta name="format-detection" content="telephone=no">
     
     <style>
         /* ===================================
@@ -65,7 +57,6 @@
             align-items: center;
             justify-content: center;
             z-index: 99999;
-            animation: fadeOutSplash 0.5s ease 1.8s forwards;
         }
 
         .splash-logo {
@@ -107,16 +98,8 @@
             to { transform: rotate(360deg); }
         }
 
-        @keyframes fadeOutSplash {
-            to {
-                opacity: 0;
-                visibility: hidden;
-                pointer-events: none;
-            }
-        }
-
         /* ===================================
-           INSTALL PROMPT MODAL
+           MODAL DE INSTALAÇÃO
            =================================== */
         .install-prompt-modal {
             position: fixed;
@@ -124,13 +107,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.92);
             display: none;
             align-items: center;
             justify-content: center;
             z-index: 99998;
             padding: 20px;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             animation: fadeIn 0.3s ease;
         }
 
@@ -141,25 +124,27 @@
         .install-prompt-content {
             background: white;
             border-radius: 24px;
-            padding: 40px 32px;
-            max-width: 400px;
+            padding: 48px 40px;
+            max-width: 440px;
+            width: 100%;
             text-align: center;
-            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
-            animation: slideUp 0.4s ease;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+            animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .install-prompt-icon {
-            font-size: 72px;
+            font-size: 80px;
             margin-bottom: 24px;
-            animation: bounce 1s ease infinite;
+            animation: bounce 2s ease infinite;
         }
 
         .install-prompt-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
             color: #000;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            line-height: 1.2;
         }
 
         .install-prompt-text {
@@ -172,24 +157,27 @@
         .install-prompt-benefits {
             text-align: left;
             margin-bottom: 32px;
-            background: #F5F5F5;
-            padding: 20px;
+            background: #F8F8F8;
+            padding: 24px;
             border-radius: 12px;
         }
 
         .install-prompt-benefits li {
             list-style: none;
-            padding: 8px 0;
-            font-size: 14px;
+            padding: 10px 0;
+            font-size: 15px;
             color: #333;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .install-prompt-benefits li:before {
             content: "✓";
             color: #A7ED00;
             font-weight: bold;
-            margin-right: 12px;
-            font-size: 18px;
+            font-size: 20px;
+            flex-shrink: 0;
         }
 
         .install-prompt-buttons {
@@ -199,7 +187,8 @@
         }
 
         .install-prompt-btn {
-            padding: 16px 32px;
+            width: 100%;
+            padding: 18px 32px;
             border: none;
             border-radius: 12px;
             font-size: 16px;
@@ -207,21 +196,24 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .install-prompt-btn-primary {
-            background: #A7ED00;
+            background: linear-gradient(135deg, #A7ED00, #8BC500);
             color: #000;
+            box-shadow: 0 4px 12px rgba(167, 237, 0, 0.3);
         }
 
         .install-prompt-btn-primary:hover {
-            background: #8BC500;
+            background: linear-gradient(135deg, #8BC500, #7AB000);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(167, 237, 0, 0.3);
+            box-shadow: 0 8px 24px rgba(167, 237, 0, 0.4);
         }
 
         .install-prompt-btn-secondary {
-            background: transparent;
+            background: white;
             color: #666;
             border: 2px solid #E0E0E0;
         }
@@ -229,6 +221,166 @@
         .install-prompt-btn-secondary:hover {
             border-color: #A7ED00;
             color: #A7ED00;
+            background: #F8FFF0;
+        }
+
+        /* ===================================
+           MODAL DE CADASTRO (BONITO)
+           =================================== */
+        .signup-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100000;
+            padding: 20px;
+            backdrop-filter: blur(15px);
+            animation: fadeIn 0.4s ease;
+        }
+
+        .signup-modal.show {
+            display: flex;
+        }
+
+        .signup-modal-content {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 32px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+            animation: slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .signup-modal-icon {
+            font-size: 72px;
+            margin-bottom: 20px;
+            animation: bounce 2s ease infinite;
+        }
+
+        .signup-modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .signup-modal-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .signup-modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .signup-modal-input {
+            padding: 16px 20px;
+            border: 2px solid #E0E0E0;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+            background: #FAFAFA;
+        }
+
+        .signup-modal-input:focus {
+            outline: none;
+            border-color: #A7ED00;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(167, 237, 0, 0.1);
+        }
+
+        .signup-modal-btn {
+            padding: 18px 32px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .signup-modal-btn-primary {
+            background: linear-gradient(135deg, #A7ED00, #8BC500);
+            color: #000;
+            box-shadow: 0 4px 12px rgba(167, 237, 0, 0.3);
+        }
+
+        .signup-modal-btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(167, 237, 0, 0.4);
+        }
+
+        .signup-modal-btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .signup-modal-btn-secondary {
+            background: white;
+            color: #666;
+            border: 2px solid #E0E0E0;
+        }
+
+        .signup-modal-btn-secondary:hover {
+            border-color: #A7ED00;
+            color: #A7ED00;
+            background: #F8FFF0;
+        }
+
+        .signup-modal-benefits {
+            text-align: left;
+            background: #F8F8F8;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .signup-modal-benefits h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .signup-modal-benefits ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .signup-modal-benefits li {
+            padding: 8px 0;
+            font-size: 14px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .signup-modal-benefits li:before {
+            content: "✓";
+            color: #A7ED00;
+            font-weight: bold;
+            font-size: 18px;
         }
 
         @keyframes fadeIn {
@@ -313,7 +465,6 @@
                 text-align: center;
             }
 
-            /* Ocultar elementos no mobile */
             .header-premium .top-bar-premium {
                 display: none;
             }
@@ -325,25 +476,25 @@
             .whatsapp-float-premium {
                 bottom: 85px !important;
             }
+
+            .install-prompt-content,
+            .signup-modal-content {
+                padding: 32px 24px;
+                max-width: 90%;
+            }
         }
 
-        /* App-like scroll */
         html {
             overscroll-behavior: none;
         }
 
         body {
             overscroll-behavior-y: contain;
+            animation: pageSlideIn 0.3s ease;
         }
 
-        /* Touch feedback */
         * {
             -webkit-tap-highlight-color: rgba(167, 237, 0, 0.2);
-        }
-
-        /* Page transition */
-        body {
-            animation: pageSlideIn 0.3s ease;
         }
 
         @keyframes pageSlideIn {
@@ -357,7 +508,6 @@
             }
         }
 
-        /* Active button effect */
         .btn-primary:active,
         .btn-secondary:active,
         .btn-hero-premium:active {
@@ -373,7 +523,7 @@
         <div class="splash-spinner"></div>
     </div>
 
-    <!-- Install Prompt Modal -->
+    <!-- Modal de Instalação -->
     <div class="install-prompt-modal" id="installPromptModal">
         <div class="install-prompt-content">
             <div class="install-prompt-icon">📲</div>
@@ -398,12 +548,62 @@
         </div>
     </div>
 
+    <!-- Modal de Cadastro (BONITO) -->
+    <div class="signup-modal" id="signupModal">
+        <div class="signup-modal-content">
+            <div class="signup-modal-icon">🎁</div>
+            <h2 class="signup-modal-title">Receba Promoções Exclusivas</h2>
+            <p class="signup-modal-text">
+                Cadastre-se e receba <strong>notificações</strong> das melhores ofertas em primeira mão!
+            </p>
+
+            <form class="signup-modal-form" id="signupModalForm">
+                <input 
+                    type="text" 
+                    class="signup-modal-input" 
+                    id="signupName" 
+                    name="signup-name"
+                    placeholder="Seu nome completo" 
+                    required
+                    autocomplete="name"
+                >
+                <input 
+                    type="email" 
+                    class="signup-modal-input" 
+                    id="signupEmail" 
+                    name="signup-email"
+                    placeholder="Seu melhor e-mail" 
+                    required
+                    autocomplete="email"
+                >
+                
+                <div class="signup-modal-benefits">
+                    <h4>🎯 Você vai receber:</h4>
+                    <ul>
+                        <li>Notificações de promoções exclusivas</li>
+                        <li>Ofertas relâmpago em primeira mão</li>
+                        <li>Lançamentos antes de todo mundo</li>
+                        <li>Cupons de desconto especiais</li>
+                    </ul>
+                </div>
+
+                <button type="submit" class="signup-modal-btn signup-modal-btn-primary" id="signupSubmitBtn">
+                    🔔 Quero Receber Promoções!
+                </button>
+            </form>
+
+            <button type="button" class="signup-modal-btn signup-modal-btn-secondary" onclick="closeSignupModal()">
+                Não, obrigado
+            </button>
+        </div>
+    </div>
+
     <!-- Header Premium -->
     <header class="header-premium">
         <div class="top-bar-premium">
             <div class="container-premium">
                 <div class="top-bar-content">
-                    <p class="announcement">✨Seu estilo merece peças que falem por você</p>
+                    <p class="announcement">✨ Seu estilo merece peças que falem por você</p>
                     <div class="top-actions">
                         <a href="#" id="headerInstagram" class="top-link" target="_blank">
                             <span>📷 Instagram</span>
@@ -669,17 +869,17 @@
     </a>
 
     <!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-messaging-compat.js"></script>
 
-<!-- Configuração e FCM -->
-<script src="loja-config.js"></script>
-<script src="fcm-register.js"></script>
+    <!-- Configuração e FCM -->
+    <script src="loja-config.js"></script>
+    <script src="fcm-register.js"></script>
     
-        <script>
+    <script>
     // ===================================
     // DETECTAR APP INSTALADO
     // ===================================
@@ -687,74 +887,54 @@
                          window.navigator.standalone === true;
     
     let deferredPrompt = null;
+    let splashClosed = false;
 
-    console.log('📱 App standalone?', isStandalone);
+    console.log('📱 Standalone?', isStandalone);
 
-    // ===================================
-    // LIMPAR FLAGS PROBLEMÁTICAS
-    // ===================================
     if (!isStandalone) {
-        // Se NÃO está instalado, limpar flag de "já mostrou"
         localStorage.removeItem('installPromptShown');
-        console.log('🧹 Flags limpas');
     }
 
     // ===================================
     // CAPTURAR EVENTO beforeinstallprompt
     // ===================================
     window.addEventListener('beforeinstallprompt', (e) => {
-        console.log('📲 beforeinstallprompt CAPTURADO!');
+        console.log('📲 Evento capturado');
         e.preventDefault();
         deferredPrompt = e;
-        
-        // Mostrar IMEDIATAMENTE após splash
-        if (!isStandalone) {
-            console.log('✅ Mostrando modal instalação em 2.5s...');
-            setTimeout(() => {
-                showInstallModal();
-            }, 2500);
-        }
     });
 
     // ===================================
-    // MOSTRAR MODAL INSTALAÇÃO
+    // SPLASH SCREEN (CONTROLE)
     // ===================================
+    window.addEventListener('load', () => {
+        console.log('🎬 Página carregada');
+        
+        setTimeout(() => {
+            const splash = document.getElementById('splashScreen');
+            if (splash) {
+                splash.style.display = 'none';
+                splashClosed = true;
+                console.log('🎬 Splash fechado');
+                
+                // Mostrar modal instalação APÓS splash
+                if (!isStandalone && deferredPrompt) {
+                    setTimeout(() => showInstallModal(), 500);
+                } else if (!isStandalone && !deferredPrompt) {
+                    setTimeout(() => showInstallModal(), 500);
+                }
+            }
+        }, 2000);
+    });
+
     function showInstallModal() {
-        if (isStandalone) {
-            console.log('⏭️ App já instalado, pulando');
-            return;
-        }
-
+        if (isStandalone) return;
         const modal = document.getElementById('installPromptModal');
-        if (!modal) {
-            console.error('❌ Modal #installPromptModal não encontrado no HTML!');
-            return;
-        }
-
-        if (deferredPrompt) {
-            console.log('📲 MOSTRANDO MODAL DE INSTALAÇÃO');
-            modal.classList.add('show');
-        } else {
-            console.warn('⚠️ deferredPrompt não existe. Mostrando mesmo assim...');
+        if (modal) {
+            console.log('📲 MODAL INSTALAÇÃO');
             modal.classList.add('show');
         }
     }
-
-    // ===================================
-    // FORÇAR MOSTRAR INSTALAÇÃO (fallback se evento não disparar)
-    // ===================================
-    window.addEventListener('load', () => {
-        if (!isStandalone) {
-            // Se após 4 segundos o modal ainda não apareceu, forçar
-            setTimeout(() => {
-                const modal = document.getElementById('installPromptModal');
-                if (modal && !modal.classList.contains('show')) {
-                    console.warn('⚠️ beforeinstallprompt NÃO disparou. Forçando modal...');
-                    modal.classList.add('show');
-                }
-            }, 4000);
-        }
-    });
 
     // ===================================
     // BOTÃO INSTALAR
@@ -769,37 +949,22 @@
                 modal.classList.remove('show');
                 
                 if (!deferredPrompt) {
-                    console.warn('⚠️ deferredPrompt não existe');
-                    alert('⚠️ Instalação não disponível automaticamente.\n\nPara instalar:\n\nChrome: Menu (⋮) → Instalar app\niOS Safari: Compartilhar (⬆️) → Adicionar à tela inicial');
-                    
-                    // Marcar como "tentou instalar" e pedir notificação
-                    localStorage.setItem('install_attempted', 'true');
-                    setTimeout(() => pedirNotificacao(), 1000);
+                    alert('⚠️ Instalação não disponível.\n\nTente: Menu → Instalar app');
+                    setTimeout(() => showSignupModal(), 500);
                     return;
                 }
 
-                console.log('📥 Solicitando instalação...');
-                
                 try {
                     deferredPrompt.prompt();
                     const { outcome } = await deferredPrompt.userChoice;
                     
-                    console.log('📊 Resultado:', outcome);
-                    
                     if (outcome === 'accepted') {
-                        console.log('✅ Instalado!');
-                        alert('✅ App instalado com sucesso!');
+                        console.log('✅ Instalado');
                         localStorage.setItem('app_installed', 'true');
-                        
-                        // Pedir notificação após instalar
-                        setTimeout(() => pedirNotificacao(), 2000);
-                    } else {
-                        console.log('❌ Recusado');
-                        alert('ℹ️ Instalação cancelada');
+                        setTimeout(() => showSignupModal(), 1500);
                     }
                 } catch (error) {
                     console.error('Erro:', error);
-                    alert('❌ Erro ao instalar');
                 }
                 
                 deferredPrompt = null;
@@ -808,73 +973,98 @@
 
         if (btnDecline) {
             btnDecline.addEventListener('click', () => {
-                const modal = document.getElementById('installPromptModal');
-                modal.classList.remove('show');
-                console.log('❌ Instalação recusada');
+                document.getElementById('installPromptModal').classList.remove('show');
                 localStorage.setItem('install_declined', 'true');
             });
         }
     });
 
+    window.addEventListener('appinstalled', () => {
+        console.log('✅ Instalado!');
+        localStorage.setItem('app_installed', 'true');
+        setTimeout(() => showSignupModal(), 1500);
+    });
+
     // ===================================
-    // PEDIR NOTIFICAÇÃO
+    // MODAL DE CADASTRO (1 MODAL BONITO)
     // ===================================
-    function pedirNotificacao() {
+    function showSignupModal() {
         const jaRegistrou = localStorage.getItem('fcm_registered') === 'true';
         const jaRecusou = localStorage.getItem('fcm_refused') === 'true';
         
         if (jaRegistrou || jaRecusou) {
-            console.log('⏭️ Notificação já resolvida');
+            console.log('⏭️ Já respondeu');
             return;
         }
 
-        if (!('Notification' in window)) {
-            console.warn('⚠️ Notificações não suportadas');
-            return;
-        }
-
-        console.log('🔔 Pedindo dados para notificação...');
-
-        const nome = prompt('📝 Digite seu nome para receber promoções exclusivas:');
-        if (!nome || nome.trim() === '') {
-            console.log('❌ Nome não informado');
-            localStorage.setItem('fcm_refused', 'true');
-            return;
-        }
-
-        const email = prompt('📧 Digite seu email:');
-        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            alert('❌ Email inválido');
-            localStorage.setItem('fcm_refused', 'true');
-            return;
-        }
-
-        console.log('🔔 Registrando FCM com:', nome, email);
-        
-        if (typeof window.registerFCMFromModal === 'function') {
-            window.registerFCMFromModal(nome.trim(), email.trim())
-                .then(() => {
-                    alert('✅ Notificações ativadas! Você receberá ofertas exclusivas.');
-                })
-                .catch(err => {
-                    console.error('Erro FCM:', err);
-                    alert('❌ Erro ao ativar notificações');
-                });
-        } else {
-            console.warn('⚠️ registerFCMFromModal não disponível');
+        const modal = document.getElementById('signupModal');
+        if (modal) {
+            console.log('📝 MODAL CADASTRO');
+            modal.classList.add('show');
         }
     }
 
-    // ===================================
-    // EVENTO APP INSTALADO
-    // ===================================
-    window.addEventListener('appinstalled', () => {
-        console.log('✅ App instalado via evento!');
-        localStorage.setItem('app_installed', 'true');
-        alert('✅ App instalado! Você pode acessá-lo pela tela inicial.');
-        
-        // Pedir notificação
-        setTimeout(() => pedirNotificacao(), 1500);
+    function closeSignupModal() {
+        const modal = document.getElementById('signupModal');
+        if (modal) {
+            modal.classList.remove('show');
+            localStorage.setItem('fcm_refused', 'true');
+        }
+    }
+    window.closeSignupModal = closeSignupModal;
+
+    // FORM DE CADASTRO
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('signupModalForm');
+        if (!form) return;
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const nameInput = document.getElementById('signupName');
+            const emailInput = document.getElementById('signupEmail');
+            const submitBtn = document.getElementById('signupSubmitBtn');
+
+            const nome = nameInput.value.trim();
+            const email = emailInput.value.trim();
+
+            if (!nome || nome.length < 3) {
+                alert('❌ Digite seu nome completo');
+                nameInput.focus();
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('❌ E-mail inválido');
+                emailInput.focus();
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Cadastrando...';
+
+            try {
+                console.log('🔔 Registrando FCM:', nome, email);
+                
+                if (typeof window.registerFCMFromIndex === 'function') {
+                    await window.registerFCMFromIndex(nome, email);
+                    
+                    alert('✅ Notificações ativadas!\n\nVocê receberá promoções exclusivas.');
+                    
+                    const modal = document.getElementById('signupModal');
+                    if (modal) modal.classList.remove('show');
+                    
+                } else {
+                    alert('❌ Erro ao ativar notificações');
+                }
+
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('❌ Erro ao cadastrar');
+                submitBtn.disabled = false;
+                submitBtn.textContent = '🔔 Quero Receber Promoções!';
+            }
+        });
     });
 
     // ===================================
@@ -889,25 +1079,12 @@
     }
 
     // ===================================
-    // SPLASH SCREEN
-    // ===================================
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const splash = document.getElementById('splashScreen');
-            if (splash) {
-                splash.style.display = 'none';
-                console.log('🎬 Splash fechado');
-            }
-        }, 2000);
-    });
-
-    // ===================================
     // NEWSLETTER FOOTER
     // ===================================
     function setupNewsletterForm() {
         const form = document.getElementById('newsletterForm');
         if (!form) return;
-
+        
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const emailInput = form.querySelector('input[type="email"]');
@@ -925,11 +1102,11 @@
                 const exists = await db.collection('newsletter').where('email', '==', email).limit(1).get();
                 
                 if (!exists.empty) {
-                    alert('ℹ️ E-mail já cadastrado!');
+                    alert('ℹ️ Já cadastrado!');
                     form.reset();
                     return;
                 }
-
+                
                 await db.collection('newsletter').add({
                     email: email,
                     subscribedAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -939,7 +1116,6 @@
                 alert('✅ Cadastrado!');
                 form.reset();
             } catch (error) {
-                console.error('Erro:', error);
                 alert('❌ Erro');
             }
         });
@@ -965,6 +1141,7 @@
     function setupMobileMenu() {
         const toggle = document.getElementById('mobileMenuToggle');
         const nav = document.getElementById('mainNav');
+        
         if (toggle && nav) {
             toggle.addEventListener('click', () => {
                 nav.classList.toggle('active');
@@ -974,62 +1151,32 @@
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
-        console.log('🚀 Inicializando...');
-        console.log('📱 Standalone?', isStandalone);
+        console.log('🚀 Init');
         
         try {
             if (typeof loadStoreSettings === 'function') await loadStoreSettings();
             if (typeof loadFeaturedProducts === 'function') await loadFeaturedProducts();
             if (typeof loadActivePromotions === 'function') await loadActivePromotions();
             if (typeof loadCollections === 'function') await loadCollections();
-        } catch (error) {
-            console.error('Erro:', error);
-        }
+        } catch (error) {}
         
         setupMobileMenu();
         updateCartCount();
         setupNewsletterForm();
         
-        console.log('✅ App carregado!');
+        console.log('✅ OK');
     });
-
-    // ===================================
-    // DEBUG
-    // ===================================
-    window.forceInstallModal = () => {
-        const modal = document.getElementById('installPromptModal');
-        if (modal) {
-            modal.classList.add('show');
-            console.log('✅ Modal forçado!');
-        } else {
-            console.error('❌ Modal não encontrado!');
-        }
-    };
 
     window.resetAll = () => {
         localStorage.clear();
-        console.log('🔄 Tudo limpo! Recarregando...');
         location.reload();
     };
 
-    window.checkStatus = () => {
-        console.log('📊 STATUS:', {
-            standalone: isStandalone,
-            deferredPrompt: !!deferredPrompt,
-            localStorage: {
-                installPromptShown: localStorage.getItem('installPromptShown'),
-                app_installed: localStorage.getItem('app_installed'),
-                fcm_registered: localStorage.getItem('fcm_registered')
-            }
-        });
+    window.forceSignupModal = () => {
+        showSignupModal();
     };
     
-    console.log('💡 Comandos:');
-    console.log('   forceInstallModal() - forçar modal');
-    console.log('   checkStatus() - ver status');
-    console.log('   resetAll() - limpar tudo');
+    console.log('💡 resetAll() | forceSignupModal()');
     </script>
 </body>
 </html>
-
-
